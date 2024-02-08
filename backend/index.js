@@ -1,6 +1,5 @@
 const { ApolloServer } = require('@apollo/server')
 const { startStandaloneServer } = require('@apollo/server/standalone')
-const { v1: uuid } = require('uuid')
 const { GraphQLError } = require('graphql')
 
 const mongoose = require('mongoose')
@@ -92,7 +91,7 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    personCount: () => Person.collection.countDocuments(),
+    personCount: async () => Person.collection.countDocuments(),
     allPersons: async (root, args) => {
       if(!args.phone) {
         return Person.find({})
