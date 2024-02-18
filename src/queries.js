@@ -63,3 +63,12 @@ export const LOGIN = gql`
             value
         }
     }`
+
+export const PERSON_ADDED = gql`
+    subscription {
+      personAdded {
+        ...PersonDetails
+      }
+    }
+    ${PERSON_DETAILS}
+  `
